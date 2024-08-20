@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Carbon Footprint Calculator{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">H.M.S</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+{% if current_user.usertype=="Doctor" %}
+  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.doctors') }}">Doctors</a>
+                </li>
+                
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.bookings') }}">Booking Details</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.details') }}">Patients Details</a>
+                </li>
+{% else %}
+             
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.patients') }}">Patients Booking</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('main.bookings') }}">Booking Details</a>
+                </li>
+                
+{% endif %}
+    {% if current_user.is_authenticated  %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Welcome {{current_user.username}}
+              </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                        <a class="dropdown-item" href="{{ url_for('main.logout') }}">Logout</a>
+                    </div>
+                </li>
+{% else %}
+
+<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Authentication
+              </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('main.signup') }}">Signup</a>
+                        <a class="dropdown-item" href="{{ url_for('main.login') }}">Login </a>
+                   
+                    </div>
+                </li>
+
+
+
+{% endif %}
+
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="{{ url_for('main.search') }}" method="post">
+                <input class="form-control mr-sm-2" type="search" placeholder="Department" name="search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    {% block body %}
+
+    {% endblock body %}
+
+<div class="card text-white bg-dark">
+  <div class="card-header">Done By:</div>
+  <div class="card-body">
+    <h5 class="card-title">Joel</h5>
+    <h5 class="card-title">Onyango</h5>
+    <p class="card-text">I am a Bachelor of Applied Statistics with IT, from Maseno University, Kenya. I have worked in the field of data science for over 5 years working with Python, R, SPSS,STATA, HTML, CSS, Flask and Django Webframeworks</p>
+  </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+</body>
+
+</html>
