@@ -90,7 +90,9 @@ These are in the committed code and will raise at runtime:
 - That traceback references a source directory named `Hospital-Management-System-dbmsminiproject-main`,
   which suggests this project was **derived from an existing open-source hospital-management
   project** rather than written from scratch. **TODO: verify the upstream source and add attribution
-  plus its licence terms**, since the current `LICENSE` (GPL-3.0) may not be compatible with it.
+  plus its licence terms.** This matters: if the upstream project is copyleft, relicensing this
+  derivative work under the proprietary `LICENSE` in this repository may not be permitted. Resolve
+  the provenance before distributing this repository under those terms.
 - `__pycache__/*.pyc` files are committed. There is no `.gitignore`.
 
 ## Security / privacy
@@ -107,4 +109,15 @@ implemented, but the doctor-creation bug blocks the main flow and several routes
 
 ## Licence
 
-GPL-3.0 (see `LICENSE`) — but see the attribution note above.
+**Proprietary software — all rights reserved.** Copyright © 2026 Joel Harold Onyango.
+
+This repository is not open source. The full terms are in [LICENSE](LICENSE); in
+summary, you may not copy, redistribute, modify, sublicense, publish, re-host or
+commercially exploit this software, in whole or in part, without the prior
+written permission of the copyright holder. Access to this repository does not
+grant any licence beyond reading it.
+
+Previous versions of this repository were published under an open-source licence.
+That change is not retroactive: copies obtained under the earlier licence remain
+governed by its terms. Everything from this commit onward is covered by
+[LICENSE](LICENSE).
